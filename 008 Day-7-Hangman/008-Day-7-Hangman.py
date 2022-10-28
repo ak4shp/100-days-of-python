@@ -1,63 +1,7 @@
-print("Welcome to The Hangman Game. Guess correct letters to save the man from hanging!! ")
 import random
+from hangman_stages import stages
 
-#All the stages of hanging
-stages = ['''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========
-''']
+print("Welcome to The Hangman Game. Guess correct letters to save the man from hanging!! ")
 
 #Choosing random word from the list
 word_list = ["mammal", "postman", "random", "lost"]
