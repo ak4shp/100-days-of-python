@@ -1,10 +1,11 @@
 import random
 from hangman_stages import stages
+from hangman_words import words_list
 
 print("Welcome to The Hangman Game. Guess correct letters to save the man from hanging!! ")
 
 #Choosing random word from the list
-word_list = ["mammal", "postman", "random", "lost"]
+word_list = words_list      
 to_guess = random.choice(word_list)
 
 #Track of correctly choosen words
