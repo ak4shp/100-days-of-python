@@ -1,5 +1,5 @@
 import random
-from hangman_stages import stages, logo
+from hangman_arts import stages, logo
 from hangman_words import words_list
 
 print(logo)
@@ -29,7 +29,7 @@ while not end_of_game:
     if end_life:
         life -= 1
         if life <= 0:
-            print("You lose !!")
+            print("\nYou LOSE !!")
             end_of_game = True
 
     print(f"{' '.join(guessed_list)}")
@@ -37,7 +37,7 @@ while not end_of_game:
     #All letters guessed
     if "_" not in guessed_list:
         end_of_game = True
-        print("You Won !!")
+        print("\nYou WON !!")
 
     #How's The Hangman
     print(stages[life])
