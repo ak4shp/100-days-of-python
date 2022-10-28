@@ -53,7 +53,7 @@ while not end_of_game:
 print("Correct word: ", to_guess)
 
 #Get word meaning
-print("\nPress (1) for it's meanings\n Press any key to exit.")
+print(f"\nPress (1) for meanings of '{to_guess}'\n Press any key to exit.")
 meaning = input()
 if meaning == '1':
     get_meaning(to_guess)

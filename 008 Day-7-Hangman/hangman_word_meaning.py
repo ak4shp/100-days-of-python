@@ -1,10 +1,6 @@
 import requests
 
-
-
-
 def get_meaning(word):
-    
     w = word.lower()
     api_url = f"https://api.dictionaryapi.dev/api/v2/entries/en/{w}"
 
@@ -13,13 +9,13 @@ def get_meaning(word):
     content = response.json()
     
     try:
-        repo = content[0]['meanings']
+        report = content[0]['meanings']
         print(f"\nDefinitions for {word} ---->>>>\n")
 
-        for r in range(len(repo)):
+        for r in range(len(report)):
 
-            part_of_speech = repo[r]['partOfSpeech']
-            word_meanings = repo[r]['definitions']
+            part_of_speech = report[r]['partOfSpeech']
+            word_meanings = report[r]['definitions']
             print(f"\nPART OF SPEECH : ||{part_of_speech}||")
 
             for wm in word_meanings:
@@ -41,8 +37,6 @@ def get_meaning(word):
                 except KeyError:
                     pass
 
-
     except KeyError:
         print("!! Please check the spellings.")
 
-get_meaning("isolation")
