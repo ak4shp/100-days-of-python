@@ -1,6 +1,7 @@
 import random
 from hangman_arts import stages, logo
 from hangman_words import words_list
+from hangman_word_meaning import get_meaning
 
 print(logo)
 print("Welcome to The Hangman Game. Guess correct letters to save the man from hanging!! ")
@@ -21,7 +22,7 @@ while not end_of_game:
 
     #Check for already guessed letter
     if user_guessing in guessed_list:
-        print(F"You've already chosen '{user_guessing}'. Ummh... Try out something else!")
+        print(f"You've already chosen '{user_guessing}'. Ummh... Try out something else!")
 
     #Check for correct guess
     for i in range(len(to_guess)):
@@ -50,3 +51,9 @@ while not end_of_game:
 
 #Correct word
 print("Correct word: ", to_guess)
+
+#Get word meaning
+print("\nPress (1) for it's meanings\n Press any key to exit.")
+meaning = input()
+if meaning == '1':
+    get_meaning(to_guess)
