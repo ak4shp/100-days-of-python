@@ -13,11 +13,15 @@ to_guess = random.choice(word_list)
 guessed_list = ["_"]*len(to_guess)
 life = 6
 
-# main logic
+'''__MAIN Logic__'''
 end_of_game = False
 while not end_of_game:
     user_guessing = input("\nGuess a letter: ").lower()
     end_life = True
+
+    #Check for already guessed letter
+    if user_guessing in guessed_list:
+        print(F"You've already chosen '{user_guessing}'. Ummh... Try out something else!")
 
     #Check for correct guess
     for i in range(len(to_guess)):
@@ -27,11 +31,13 @@ while not end_of_game:
 
     #Check for remaining life
     if end_life:
+        print(f"You guess '{user_guessing}', that's not in the word. You lose a Life :(")
         life -= 1
         if life <= 0:
             print("\nYou LOSE !!")
             end_of_game = True
 
+    #Print all guessed letters so far with correct position
     print(f"{' '.join(guessed_list)}")
 
     #All letters guessed
@@ -39,7 +45,8 @@ while not end_of_game:
         end_of_game = True
         print("\nYou WON !!")
 
-    #How's The Hangman
+    #How's the Hangman doing
     print(stages[life])
 
+#Correct word
 print("Correct word: ", to_guess)
