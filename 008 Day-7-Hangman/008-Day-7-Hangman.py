@@ -1,7 +1,8 @@
 import random
-from hangman_stages import stages
+from hangman_stages import stages, logo
 from hangman_words import words_list
 
+print(logo)
 print("Welcome to The Hangman Game. Guess correct letters to save the man from hanging!! ")
 
 #Choosing random word from the list
@@ -15,7 +16,7 @@ life = 6
 # main logic
 end_of_game = False
 while not end_of_game:
-    user_guessing = input("\nGuess a word: ").lower()
+    user_guessing = input("\nGuess a letter: ").lower()
     end_life = True
 
     #Check for correct guess
