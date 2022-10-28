@@ -1,3 +1,4 @@
+import os
 import random
 from hangman_arts import stages, logo
 from hangman_words import words_list
@@ -19,6 +20,9 @@ end_of_game = False
 while not end_of_game:
     user_guessing = input("\nGuess a letter: ").lower()
     end_life = True
+
+    #Clear the screen
+    os.system("clear")
 
     #Check for already guessed letter
     if user_guessing in guessed_list:
@@ -56,4 +60,5 @@ print("Correct word: ", to_guess)
 print(f"\nPress (1) for meanings of '{to_guess}'\n Press any key to exit.")
 meaning = input()
 if meaning == '1':
+    os.system("clear")
     get_meaning(to_guess)
