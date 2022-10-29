@@ -1,5 +1,5 @@
+from Caesar_Cipher_art import logo
 from string import ascii_lowercase as abc
-
 alphabates = abc
 
 def cipher(to_cipher_text, to_shift, enc_dec):
@@ -28,7 +28,7 @@ def main_menu():
     if again == "yes":
         main_menu()
     else:
-        print("End of Caesar Cipher !!")
+        print("\n      ***  End of Caesar Cipher !!  ***")
             
-
+print(logo)
 main_menu()
