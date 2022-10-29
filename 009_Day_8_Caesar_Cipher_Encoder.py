@@ -25,12 +25,16 @@ def decrypt(encrypted_text, to_shift_back):
             new_idx = idx - to_shift_back
             new_character = alphabates[new_idx]
             decrypted += new_character
-    print("Msg is ", decrypted)
+    print("The decoded text is ", decrypted)
 
 
 direction = input("Choose (1) to encrypt, type (0) to decrypt:\n")
 text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
 
-decrypt(encrypted_text = text, to_shift_back=shift)
-
+if direction == '1':
+    encrypt(plain_text = text, to_shift = shift)
+elif direction == '0':
+    decrypt(encrypted_text = text, to_shift_back=shift)
+else:
+    print("Invalid!! Choose 1 or 0")
