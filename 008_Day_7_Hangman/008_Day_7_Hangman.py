@@ -22,7 +22,7 @@ while not end_of_game:
     end_life = True
 
     #Clear the screen
-    os.system("clear")
+    os.system("cls")
 
     #Check for already guessed letter
     if user_guessing in guessed_list:
@@ -60,5 +60,8 @@ print("Correct word: ", to_guess)
 print(f"\nPress (1) for meanings of '{to_guess}'\n Press any key to exit.")
 meaning = input()
 if meaning == '1':
-    os.system("clear")
+    os.system("cls")
     get_meaning(to_guess)
+
+
+input("Press enter to proceed...")
