@@ -1,7 +1,9 @@
 import os
+from Secret_Auctio_art import logo
 
+print(logo)
+print("Welcome to the Secret Auction programm.\n\n")
 bidders = {}
-print("Welcome message")
 
 def find_winner(bidders):
     winner_name = ''        
@@ -22,7 +24,7 @@ while more_bidders:
 
     other_bidders = input("\nAre there any other bidders? \nType 'no' to end bid or press any key to continue bidding...\n").lower()
     os.system("cls")
-    
+
     if other_bidders == 'no':
         more_bidders = False
         find_winner(bidders)
