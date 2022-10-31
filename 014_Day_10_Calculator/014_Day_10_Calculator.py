@@ -1,3 +1,4 @@
+from Calculator_art import logo
 
 # Add
 def add(n1, n2):
@@ -25,8 +26,9 @@ operations = {
 
 def calculation():
     """Performs chosen operation between given numbers. You can Continue with previous result or start new."""
+    print(logo)
     # Ask for first num and Print all symbols for UX
-    num1 = int(input("First number? "))
+    num1 = float(input("First number? "))
     for symbol in operations:
         print(symbol)
 
@@ -34,7 +36,7 @@ def calculation():
     more_calculation = True
     while more_calculation:
         operation_symbol = input("\nWhich operation?  ")
-        num2 = int(input("Next number? "))
+        num2 = float(input("Next number? "))
         calculation_function = operations[operation_symbol] #Uses dict's key|value to do asked operation
         ans = calculation_function(num1, num2)
         print(f"{num1} {operation_symbol} {num2} = {ans}")
