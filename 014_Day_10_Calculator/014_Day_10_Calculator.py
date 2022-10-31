@@ -15,13 +15,13 @@ def multiply(n1, n2):
 def divide(n1, n2):
     return n1 / n2
 
-# # key -> symbol, value -> operation function
-# operations = {
-#     "+" : add,
-#     "-" : subtract,
-#     "*" : multiply,
-#     "/" : divide
-# }
+# key -> symbol, value -> operation function
+operations = {
+    "+" : add,
+    "-" : subtract,
+    "*" : multiply,
+    "/" : divide
+}
 
 
 # # Ask for first num and Print all symbols for UX
