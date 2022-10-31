@@ -23,26 +23,32 @@ operations = {
     "/" : divide
 }
 
+def calculation():
+    """Performs chosen operation between given numbers. You can Continue with previous result or start new."""
+    # Ask for first num and Print all symbols for UX
+    num1 = int(input("First number? "))
+    for symbol in operations:
+        print(symbol)
 
-# Ask for first num and Print all symbols for UX
-num1 = int(input("First number? "))
-for symbol in operations:
-    print(symbol)
+    # Continuing calculation
+    more_calculation = True
+    while more_calculation:
+        operation_symbol = input("\nWhich operation?  ")
+        num2 = int(input("Next number? "))
+        calculation_function = operations[operation_symbol] #Uses dict's key|value to do asked operation
+        ans = calculation_function(num1, num2)
+        print(f"{num1} {operation_symbol} {num2} = {ans}")
 
-# Continuing calculation
-more_calculation = True
-while more_calculation:
-    operation_symbol = input("\nWhich operation?  ")
-    num2 = int(input("Next number? "))
-    calculation_function = operations[operation_symbol] #Uses dict's key|value to do asked operation
-    ans = calculation_function(num1, num2)
-    print(f"{num1} {operation_symbol} {num2} = {ans}")
-    num1 = ans
+        more_operation = input(f"Type 'y' to continue calculating with {ans}, type 'n' to start new or\nPress any key to exit.: ").lower()
+        if more_operation == 'y':
+            num1 = ans
+        elif more_operation == 'n':
+            print("Last final result is: ", ans)
+            print("\nCalculator restarting ...")
+            calculation() #Recursion
+        else:
+            print("Final result is: ", ans)
+            more_calculation = False    
+        
+calculation()
 
-    more_operation = input(f"Type 'y' to continue calculating with {ans}, or press any key to exit.: ").lower()
-    if more_operation == 'y':
-        continue
-    else:
-        print("Final result is: ", ans)
-        more_calculation = False    
-    
