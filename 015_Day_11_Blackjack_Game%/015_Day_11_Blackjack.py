@@ -1,5 +1,7 @@
 import random
 import os
+from Blackjack_art import logo
+
 
 def deal_card():
     ''''Returns a random card from deck.'''
@@ -42,9 +44,10 @@ def compare(player_score, computer_score):
 
 
 def play_game():
-    '''Starts the Blackjack Game'''
+    '''Starts the Blackjack Game.'''
+    print(logo)
+    print("____________________ Game Started ____________________")
     # Initialise both player and computer with two cards each
-    print("____________________ Start Game ____________________")
     player_cards = [deal_card(), deal_card()]
     computer_cards = [deal_card(), deal_card()]
 
