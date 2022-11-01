@@ -3,14 +3,14 @@ import os
 from Blackjack_art import logo
 
 
-def deal_card():
+def deal_card() -> int:
     ''''Returns a random card from deck.'''
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
     card = random.choice(cards)
     return card
 
 
-def calculate_score(cards): #will return changed_score
+def calculate_score(cards : list) -> int: #will return changed_score
     '''Takes a list of cards and returns total score. Also checks for blackjack and deals with Ace card(11) condition'''
     # Blackjack
     if sum(cards) == 21 and len(cards) == 2:
@@ -24,7 +24,7 @@ def calculate_score(cards): #will return changed_score
     return sum(cards)
 
 
-def compare(player_score, computer_score):
+def compare(player_score : int, computer_score : int) -> str:
     '''Takes player and computer's score, compares and return appropriate result message.'''
 
     if player_score == computer_score:
@@ -43,7 +43,7 @@ def compare(player_score, computer_score):
         return "You Lose 😤"
 
 
-def play_game():
+def play_game() -> None:
     '''Starts the Blackjack Game.'''
     print(logo)
     print("____________________ Game Started ____________________")
@@ -79,7 +79,7 @@ def play_game():
     print(f"    Computer's final card: {computer_cards}, Final score: {computer_score}")
     print(compare(player_score= player_score, computer_score= computer_score))
 
-# Play many time
+# Play many times
 while input("\nWant to play Blackjack? type 'y' or 'n': ").lower() == 'y':
     os.system("cls")
     play_game()
