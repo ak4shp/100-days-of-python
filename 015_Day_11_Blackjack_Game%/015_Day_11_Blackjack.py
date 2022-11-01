@@ -21,6 +21,26 @@ def calculate_score(cards): #will return changed_score
 
     return sum(cards)
 
+
+def compare(player_score, computer_score):
+    '''Takes player and computer's score, compares and return appropriate result message.'''
+
+    if player_score == computer_score:
+        return "Draw 🙃"
+    elif computer_score == 0:
+        return "Lose!, Computer wins with Blackjack 😱"
+    elif player_score == 0:
+        return "Win with a Blackjack 😎"
+    elif player_score > 21:
+        return "You went over 21. You Lose 😭"
+    elif computer_score > 21:
+        return "Computer went over. You Win 😁"
+    elif player_score > computer_score:
+        return "You Win 😃"
+    else:
+        return "You Lose 😤"
+
+
 # Initialise both player and computer with two cards each
 player_cards = [deal_card(), deal_card()]
 computer_cards = [deal_card(), deal_card()]
@@ -46,28 +66,7 @@ while computer_score != 0 and computer_score < 17:
     computer_cards.append(deal_card())
     computer_score = calculate_score(computer_cards)
 
-# def compare_result(user_card, computer_card):
-#     user = calculate_score(user_card)
-#     computer = calculate_score(computer_card)
-
-#     if blackout(computer_card):
-#         return "Computer wins with blackout"
-#     elif blackout(user_card):
-#         return "You Win with blackout"
-#     elif user == computer:
-#         return "Draw"
-#     elif user > 21 and computer > 21:
-#         return "You both get over 21 You lose"
-#     elif computer > 21:
-#         return "Computer get over. You win"
-#     elif user > 21:
-#         return "You  get over 21. You lose"
-#     elif user > computer:
-#         return "You Win"
-#     else:
-#         return "You lose"
-
-
+print(compare(player_score= player_score, computer_score= computer_score))
 # print("______________ Start Game ___________")
 
 # user_score = calculate_score(player_cards)
