@@ -19,21 +19,21 @@ print(NUMBER, attempts)
 should_end_game = False
 while not should_end_game:
     print(f"\nYou have {attempts} attempts remaining to guess the number.")
-    attempts -= 1
 
-    guessed_num = int(input("Make a guess: "))
-    if guessed_num == NUMBER:
-        print("You got it! The number is ", NUMBER)
-        should_end_game = True
-    elif guessed_num < NUMBER:
-        print("Too low. Try again!")
+    if attempts > 0:
+        guessed_num = int(input("Make a guess: "))
+        if guessed_num == NUMBER:
+            print("You got it! The number is ", NUMBER)
+            should_end_game = True
+        elif guessed_num < NUMBER:
+            print("Too low. Try again!")
+        else:
+            print("Too high !! Try again.")
     else:
-        print("Too high !! Try again.")
-    
-    if attempts == 0:
         print("Oops! No more guesses are allowed. You lose.")
         should_end_game = True
 
+    attempts -= 1
     
     
 
