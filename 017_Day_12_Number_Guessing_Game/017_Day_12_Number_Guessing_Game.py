@@ -15,3 +15,20 @@ elif difficulty == 'h':
     attempts = 4
 
 print(NUMBER, attempts)
+
+should_end_game = False
+
+while not should_end_game:
+    
+    guessed_num = int(input("Make a guess: "))
+    if guessed_num == NUMBER:
+        print("You got it! The number is ", NUMBER)
+        should_end_game = True
+    elif guessed_num < NUMBER:
+        print("Too low. Try again!")
+    else:
+        print("Too high !! Try again.")
+
+    
+    
+
