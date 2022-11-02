@@ -56,7 +56,14 @@ print(f"Fn3: Updated health of player is {new_health}.")
 
 """_____________ CONSTANTS ____________"""
 
-"""Never modify a constant, never!"""
+"""Never modify a constant, never! even if you CAN do that."""
 PI = 3.1432
 URL = "https:\\\\www.ekkhiokavita.blogspot.com"
 GITHUB_ID = "https://github.com/ak4shp"
+
+def modify_const():
+    global PI
+    PI += 12
+    print("pi", PI)
+
+modify_const()
