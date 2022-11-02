@@ -1,4 +1,7 @@
 import random
+from Number_Guessing_Game_art import logo
+
+print(logo)
 welcome = """Welcome to the number guessing game!
 I'm thinking of a number between 1 and 100. Can you guess it?"""
 print(welcome)
@@ -18,9 +21,9 @@ print(NUMBER, attempts)
 
 should_end_game = False
 while not should_end_game:
-    print(f"\nYou have {attempts} attempts remaining to guess the number.")
-
+    
     if attempts > 0:
+        print(f"\nYou have {attempts} attempts remaining to guess the number.") 
         guessed_num = int(input("Make a guess: "))
         if guessed_num == NUMBER:
             print("You got it! The number is ", NUMBER)
