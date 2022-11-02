@@ -1,18 +1,19 @@
-"_________ Scope _________"
-''' NOTE : There is no Block space in python for IF-else, Loops etc.
+"""_____________ Scope ____________"""
+''' NOTE : There is no separate Block space in python for IF-else, Loops etc.
+They are are considered in that functions local space.
 Only when function is created then a Local scope comes.'''
 
 
 # Global Scope -->
 player_health = 100
-user = "Game"
+user = "Gamer999"
 enemies = 1   # Global 
 print(f"Enemies in global -> {enemies}, global name -> {user}, and total health {player_health}")
 
 def drink_potion(): # Local Scope -->
     '''Trying to modify global variable in local scope --> causes "UnboundLocalError".'''
     enemies = 2  # Local (completely new variable)
-    user = "Player"
+    user = "Player001"
     potion_strength = 50
     if player_health < 30: #UnboundLocalError: local variable 'player_health' referenced before assignment.
         player_health += potion_strength
@@ -52,3 +53,10 @@ new_health = drink_potion_3(players_health = player_health)
 # player_health = drink_potion_3(players_health = player_health)  #You can also reassign to the same variable.
 print(f"Fn3: Updated health of player is {new_health}.")
 
+
+"""_____________ CONSTANTS ____________"""
+
+"""Never modify a constant, never!"""
+PI = 3.1432
+URL = "https:\\\\www.ekkhiokavita.blogspot.com"
+GITHUB_ID = "https://github.com/ak4shp"
