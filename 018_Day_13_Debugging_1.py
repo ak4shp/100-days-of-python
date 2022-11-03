@@ -61,10 +61,10 @@
 
 ############ Debugged #####################
 
-# Fix the Errors
-age = int(input("How old are you?")) # age is 'int'
-if age > 18:
-    print(f"You can drive at age {age}.") #indentation, F-string
+# # Fix the Errors
+# age = int(input("How old are you?")) # age is 'int'
+# if age > 18:
+#     print(f"You can drive at age {age}.") #indentation, F-string
 
 
 ############ To Debug #####################
@@ -79,13 +79,13 @@ if age > 18:
 
 ############ Debugged #####################
 
-#Print is Your Friend
-# pages = 0
-# word_per_page = 0
-# pages = int(input("Number of pages: "))
-# word_per_page = int(input("Number of words per page: ")) #use '=' for asignment '==' for comparision
-# total_words = pages * word_per_page
-# print(total_words)
+# Print is Your Friend
+pages = 0
+word_per_page = 0
+pages = int(input("Number of pages: "))
+word_per_page = int(input("Number of words per page: ")) #use '=' for asignment '==' for comparision
+total_words = pages * word_per_page
+print(total_words)
 
 
 ############ To Debug #####################
