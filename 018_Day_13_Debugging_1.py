@@ -9,12 +9,12 @@
 
 ############ Debugged #####################
 
-# Describe Problem
-def my_function():
-  for i in range(1, 21): # End Range is not inclusive
-    if i == 20:
-      print("You got it")
-my_function()
+# # Describe Problem
+# def my_function():
+#   for i in range(1, 21): # End Range is not inclusive
+#     if i == 20:
+#       print("You got it")
+# my_function()
 
 
 ############ To Debug #####################
@@ -27,11 +27,11 @@ my_function()
 
 ############ Debugged #####################
 
-# # Reproduce the Bug
-# from random import randint
-# dice_imgs = ["❶", "❷", "❸", "❹", "❺", "❻"]
-# dice_num = randint(0, 5)  # Array is zero indexed.
-# print(dice_imgs[dice_num]) 
+# Reproduce the Bug
+from random import randint
+dice_imgs = ["❶", "❷", "❸", "❹", "❺", "❻"]
+dice_num = randint(0, 5)  # Array is zero indexed.
+print(dice_imgs[dice_num]) 
 
 
 ############ To Debug #####################
