@@ -45,12 +45,12 @@
 
 ############ Debugged #####################
 
-# Play Computer
-year = int(input("What's your year of birth?"))
-if year > 1980 and year <= 1994:  #What about 1994 huh??
-  print("You are a millenial.")
-elif year > 1994:
-  print("You are a Gen Z.")
+# # Play Computer
+# year = int(input("What's your year of birth?"))
+# if year > 1980 and year <= 1994:  #What about 1994 huh??
+#   print("You are a millenial.")
+# elif year > 1994:
+#   print("You are a Gen Z.")
 
 
 ############ To Debug #####################
@@ -61,10 +61,10 @@ elif year > 1994:
 
 ############ Debugged #####################
 
-# # Fix the Errors
-# age = int(input("How old are you?")) # age is 'int'
-# if age > 18:
-#     print(f"You can drive at age {age}.") #indentation, F-string
+# Fix the Errors
+age = int(input("How old are you?")) # age is 'int'
+if age > 18:
+    print(f"You can drive at age {age}.") #indentation, F-string
 
 
 ############ To Debug #####################
