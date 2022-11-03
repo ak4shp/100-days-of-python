@@ -9,12 +9,12 @@
 
 ############ Debugged #####################
 
-# # Describe Problem
-# def my_function():
-#   for i in range(1, 21): # End Range is not inclusive
-#     if i == 20:
-#       print("You got it")
-# my_function()
+# Describe Problem
+def my_function():
+  for i in range(1, 21): # End Range is not inclusive
+    if i == 20:
+      print("You got it")
+my_function()
 
 
 ############ To Debug #####################
