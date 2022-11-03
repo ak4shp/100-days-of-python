@@ -28,10 +28,10 @@
 ############ Debugged #####################
 
 # Reproduce the Bug
-from random import randint
-dice_imgs = ["❶", "❷", "❸", "❹", "❺", "❻"]
-dice_num = randint(0, 5)  # Array is zero indexed.
-print(dice_imgs[dice_num]) 
+# from random import randint
+# dice_imgs = ["❶", "❷", "❸", "❹", "❺", "❻"]
+# dice_num = randint(0, 5)  # Array is zero indexed.
+# print(dice_imgs[dice_num]) 
 
 
 ############ To Debug #####################
@@ -46,11 +46,11 @@ print(dice_imgs[dice_num])
 ############ Debugged #####################
 
 # Play Computer
-# year = int(input("What's your year of birth?"))
-# if year > 1980 and year <= 1994:  #What about 1994 huh??
-#   print("You are a millenial.")
-# elif year > 1994:
-#   print("You are a Gen Z.")
+year = int(input("What's your year of birth?"))
+if year > 1980 and year <= 1994:  #What about 1994 huh??
+  print("You are a millenial.")
+elif year > 1994:
+  print("You are a Gen Z.")
 
 
 ############ To Debug #####################
