@@ -80,12 +80,12 @@
 ############ Debugged #####################
 
 # Print is Your Friend
-pages = 0
-word_per_page = 0
-pages = int(input("Number of pages: "))
-word_per_page = int(input("Number of words per page: ")) #use '=' for asignment '==' for comparision
-total_words = pages * word_per_page
-print(total_words)
+# pages = 0
+# word_per_page = 0
+# pages = int(input("Number of pages: "))
+# word_per_page = int(input("Number of words per page: ")) #use '=' for asignment '==' for comparision
+# total_words = pages * word_per_page
+# print(total_words)
 
 
 ############ To Debug #####################
@@ -103,11 +103,11 @@ print(total_words)
 ############ Debugged #####################
 
 #Use a Debugger
-# def mutate(a_list):
-#   b_list = []
-#   for item in a_list:
-#     new_item = item * 2
-#     b_list.append(new_item)  # This operation is inside loop, so indent it
-#   print(b_list)
+def mutate(a_list):
+  b_list = []
+  for item in a_list:
+    new_item = item * 2
+    b_list.append(new_item)  # This operation is inside loop, so indent it
+  print(b_list)
 
-# mutate([1,2,3,5,8,13])
+mutate([1,2,3,5,8,13])
