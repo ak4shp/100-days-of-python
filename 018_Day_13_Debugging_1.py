@@ -111,3 +111,12 @@ def mutate(a_list):
   print(b_list)
 
 mutate([1,2,3,5,8,13])
+
+
+# Next Tip -> Take a break
+
+# Next Tip -> Ask a friend or mentor or someone who knows code.
+
+# Next Tip -> Run Often your code even you make small change. Dont save for the end.
+
+# Next Tip -> Use stackoverflow.
