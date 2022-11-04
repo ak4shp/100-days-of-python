@@ -22,4 +22,19 @@ if year % 4 == 0:
     print("Leap year.")
 else:
   print("Not leap year.")
+
+
+# FizzBuzz : fix the bugs
+
+for number in range(1, 101):
+#bug1: logic -> if-nested_if-elif-else not if-if-if-else
+  if number % 3 == 0:
+      if number % 5 == 0:
+        print("FizzBuzz")
+      else:
+        print("Fizz")
+  elif number % 5 == 0:
+    print("Buzz")
+  else:
+    print(number) #bug2: unneccesary [] in numbers. '[numbers]' -> 'numbers'.
   
