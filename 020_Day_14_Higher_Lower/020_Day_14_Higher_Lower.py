@@ -8,32 +8,27 @@ from art import logo, vs
 
 # 1. random generate a data from game data 
 def generate_subject():
+    """Returns a random account from data that has never been previously used."""
     to_compare = random.choice(data)
-    print("+++++", to_compare["follower_count"])
+    #  -> that was not used previously
     while to_compare['used']:
         to_compare = random.choice(data)
     idx = data.index(to_compare)
     data[idx]['used'] = True
     return to_compare
-#       -> that was not used previously
-
-subject_A = generate_subject()
-subject_B = generate_subject()
-
-# print(subject_A, "\n", subject_B)
 
 # 2. show with whom to compare with formate : <name>, a <prefession>, from <country>.
-#       -> Vs
-#       whom to compare
 def start(A, B):
-    print(f"Compare A: {A['name']}, a {A['description']}, from {A['country']}. -{A['follower_count']}-")
+    """Takes two accounts, Prints formatted message, ask user to choose and returns user's choice"""
+    print(f"Compare A: {A['name']}, a {A['description']}, from {A['country']}.")
     print(vs)
-    print(f"Against B: {B['name']}, a {B['description']}, from {B['country']}. -{B['follower_count']}-")
+    print(f"Against B: {B['name']}, a {B['description']}, from {B['country']}.")
     player_choice = input("Choose A or B: ").upper()
     return player_choice
 
 # 3. Compare function : compare by followers count in dict. return boolean.
 def compare(A, B, user):
+    """Takes two accounts and user's choice, compare user's choice with higher follower account. Returns boolean."""
     A_followers = A["follower_count"]
     B_followers = B["follower_count"]
     
@@ -44,16 +39,16 @@ def compare(A, B, user):
     else:
         more_followers = "B"
         # winner = B
-    # print("inside sompare fn-----, user, winner", user, more_followers)
+
     if user == more_followers:
         return True
     return False
 
 # 4. play game() if guess guess is wrong end game with total score.
-
 def play_game():
-    # random A, B
+    """Main game starts"""
     print(logo)
+    # random A, B
     subject_A = generate_subject()
     subject_B = generate_subject()  
     score = 0
@@ -65,18 +60,14 @@ def play_game():
         user = start(subject_A, subject_B)
         # compare(A, B) Tr, Fl
         res = compare(subject_A, subject_B, user)
-        # tr: score += 1
-        if res:
+        os.system("cls")
+        print(logo)
+        if res: 
             score += 1
             subject_A = subject_B
             subject_B = generate_subject() 
-            os.system("cls")
-            print(logo)
             print(f"You are right! Current score : {score}.")
-        #  fl : show score, return
         else:
-            os.system("cls")
-            print(logo)
             print("Oops! That's wrong. Final score :", score)
             game_loop = False
 
