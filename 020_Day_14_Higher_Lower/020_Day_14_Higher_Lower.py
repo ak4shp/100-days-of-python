@@ -1,12 +1,15 @@
 # to-do
 # -> import ramdom, game data
+import os
 import random
 from game_data import data
+from art import logo, vs
+
 
 # 1. random generate a data from game data 
 def generate_subject():
     to_compare = random.choice(data)
-    # print("+++++", to_compare)
+    print("+++++", to_compare["follower_count"])
     while to_compare['used']:
         to_compare = random.choice(data)
     idx = data.index(to_compare)
@@ -24,7 +27,7 @@ subject_B = generate_subject()
 #       whom to compare
 def start(A, B):
     print(f"Compare A: {A['name']}, a {A['description']}, from {A['country']}. -{A['follower_count']}-")
-    print("\nVs\n")
+    print(vs)
     print(f"Against B: {B['name']}, a {B['description']}, from {B['country']}. -{B['follower_count']}-")
     player_choice = input("Choose A or B: ").upper()
     return player_choice
@@ -34,22 +37,23 @@ def compare(A, B, user):
     A_followers = A["follower_count"]
     B_followers = B["follower_count"]
     
-    winner = None
+    # winner = None
     if A_followers > B_followers:
         more_followers = "A"
-        winner = A
+        # winner = A
     else:
         more_followers = "B"
-        winner = B
+        # winner = B
     # print("inside sompare fn-----, user, winner", user, more_followers)
     if user == more_followers:
-        return True, winner
-    return False, None
+        return True
+    return False
 
 # 4. play game() if guess guess is wrong end game with total score.
 
 def play_game():
     # random A, B
+    print(logo)
     subject_A = generate_subject()
     subject_B = generate_subject()  
     score = 0
@@ -60,15 +64,20 @@ def play_game():
         # show msg()
         user = start(subject_A, subject_B)
         # compare(A, B) Tr, Fl
-        res, winner= compare(subject_A, subject_B, user)
+        res = compare(subject_A, subject_B, user)
         # tr: score += 1
         if res:
             score += 1
-            subject_A = winner
+            subject_A = subject_B
             subject_B = generate_subject() 
+            os.system("cls")
+            print(logo)
+            print(f"You are right! Current score : {score}.")
         #  fl : show score, return
         else:
-            print("Total score: ", score)
+            os.system("cls")
+            print(logo)
+            print("Oops! That's wrong. Final score :", score)
             game_loop = False
 
 play_game()
