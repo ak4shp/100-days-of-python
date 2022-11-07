@@ -1,39 +1,33 @@
 from menu_resources import MENU, resources
 
-# Coffee Machine Program Requirements
-# 1. Prompt user by asking “What would you like? (espresso/latte/cappuccino):”
-#     a. Check the user's input to decide what to do next.
-#     b. The prompt should show every time action has completed, e.g. once the drink is
-#     dispensed. The prompt should show again to serve the next customer.
+
 def give_report():
     '''Prints resouces and money till now'''
     total_water = resources['water']
     total_milk  = resources['milk']
     total_coffee = resources['coffee']
     total_money = resources['money']
-    print(f"\twater: {total_water}\n\tmilk: {total_milk}\n\tcoffee: {total_coffee}\n\tmoney: {total_money}")
+    print(f"\tWater: {total_water}ml\n\tMilk: {total_milk}ml\n\tCoffee: {total_coffee}g\n\tMoney: ${total_money}")
 
 
 def coffee_kitchen(order):
-    '''Checks for resources, Checks for money
-    Order coffee ->  deduce resouces, add money, give changes if any'''
+    '''Checks for resources, Checks for money.
+    Order coffee ->  deduce resouces, add money, return back the change money if any'''
 
-    def check_resources()-> bool:
-        # print(coffee_ingrades)
-        # resources deduction -> done in check_resource()
+
+    def check_resources(coffee_ingrades)-> bool:
+        '''Takes Coffee Ingradients, Checks if the ingrads are sufficient to make that order.'''
+
         for k, v in coffee_ingrades.items():
-            # print(11)
-            if resources[k] >= v:
-                resources[k] -= v
-            else:
+            if resources[k] < v:
                 print(f"Sorry! there is not enough {k}.")
                 return False
         return True
 
 
-    def check_money(quarter, dimes, nickel, pennies)-> bool:
-        # add money to machine's account -> done in check_money()
-        # rerurn changes(change money) if any -> done in check_money()
+    def check_money(quarter, dimes, nickel, pennies, coffee_cost)-> bool:
+        '''Takes quantity of each denomination, checks for sufficient money to bey the order. Returns Bool with change money if any.'''
+        
         total_sum = 0.25 * quarter + 0.1 * dimes + 0.05 * nickel + 0.01 * pennies
         if total_sum >= coffee_cost:
             resources["money"] += coffee_cost
@@ -42,10 +36,21 @@ def coffee_kitchen(order):
             print("insufficient money to buy!")
             return False, None
         return True, "{:0.2f}".format(change_money)
+
+
+    def reduce_resource(ingrades)-> None:
+        '''Takes ingrades, Reduces the raw materials from machine that is used by previous order'''
+        for k, v in ingrades.items():
+            resources[k] -= v
     
 
-    def complete_the_order(order, check_resources, check_money) -> None:
-        is_resources = check_resources()
+    def complete_the_order(order) -> None:
+        '''Takes order, completes the order if sufficient resources and money. Returns None'''
+        coffee_type = MENU[order]
+        coffee_ingrades = coffee_type["ingredients"]
+        coffee_cost =coffee_type["cost"]
+
+        is_resources = check_resources(coffee_ingrades)
         if is_resources:
             print("Please insert some Coins: ")
             quarter_coins = int(input("Quarter: "))
@@ -53,31 +58,39 @@ def coffee_kitchen(order):
             nickel_coins = int(input("Nickel: "))
             pennies_coins = int(input("Pennies: "))
 
-            is_money, changes_money = check_money(quarter_coins, dimes_coins, nickel_coins, pennies_coins)
+            is_money, change_money = check_money(quarter_coins, dimes_coins, nickel_coins, pennies_coins, coffee_cost)
             if is_money:
-                if changes_money is not None:
-                    print(f"Here is your {order}. Enjoy!. You gave ${changes_money} extra!")
-                else:  
-                    print(f"Here is your {order}. Enjoy!.")
+                reduce_resource()
+                if change_money is not None:
+                    print(f"Here is ${change_money} in change!") 
+                print(f"Here is your {order}. Enjoy!.")
+
+    complete_the_order(order)
 
 
-    coffee_type = MENU[order]
-    coffee_ingrades = coffee_type["ingredients"]
-    coffee_cost =coffee_type["cost"]
-    complete_the_order(order, check_resources, check_money)
+def place_order():
+    is_coffee_machine_on = True
+    while is_coffee_machine_on:
+        user_choice = input("\nWhat would you like? (espresso/latte/cappuccino): ")
+        if user_choice == "report":
+            give_report()
+        elif user_choice == "off":
+            print("Thanks for using Coffee Machine !")
+            is_coffee_machine_on = False
+        else:
+            coffee_kitchen(user_choice)
 
 
-user_choice = input("What would you like? (espresso/latte/cappuccino): ")
-if user_choice == "report":
-    give_report()
-elif user_choice == "off":
-    # break
-    pass
-else:
-    coffee_kitchen(user_choice)
+place_order()
 
 
 """
+Coffee Machine Program Requirements
+1. Prompt user by asking “What would you like? (espresso/latte/cappuccino):”
+    a. Check the user's input to decide what to do next.
+    b. The prompt should show every time action has completed, e.g. once the drink is
+    dispensed. The prompt should show again to serve the next customer.
+
 2. Turn off the Coffee Machine by entering “off” to the prompt.
     a. For maintainers of the coffee machine, they can use “off” as the secret word to turn off
     the machine. Your code should end execution when this happens.
