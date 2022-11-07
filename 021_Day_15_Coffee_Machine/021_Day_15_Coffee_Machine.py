@@ -1,5 +1,5 @@
 from menu_resources import MENU, resources
-
+from art import LOGO
 
 def give_report():
     '''Prints resouces and money till now'''
@@ -60,10 +60,10 @@ def coffee_kitchen(order):
 
             is_money, change_money = check_money(quarter_coins, dimes_coins, nickel_coins, pennies_coins, coffee_cost)
             if is_money:
-                reduce_resource()
+                reduce_resource(coffee_ingrades)
                 if change_money is not None:
                     print(f"Here is ${change_money} in change!") 
-                print(f"Here is your {order}. Enjoy!.")
+                print(f"Enjoy! Here is your {order} --> `(_)D ")
 
     complete_the_order(order)
 
@@ -71,7 +71,7 @@ def coffee_kitchen(order):
 def place_order():
     is_coffee_machine_on = True
     while is_coffee_machine_on:
-        user_choice = input("\nWhat would you like? (espresso/latte/cappuccino): ")
+        user_choice = input("\nWhat would you like? (espresso/latte/cappuccino) or (report/off): ")
         if user_choice == "report":
             give_report()
         elif user_choice == "off":
@@ -80,7 +80,7 @@ def place_order():
         else:
             coffee_kitchen(user_choice)
 
-
+print(LOGO)
 place_order()
 
 
