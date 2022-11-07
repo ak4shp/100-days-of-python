@@ -5,8 +5,27 @@ from menu_resources import MENU, resources
 #     a. Check the user's input to decide what to do next.
 #     b. The prompt should show every time action has completed, e.g. once the drink is
 #     dispensed. The prompt should show again to serve the next customer.
+def give_report(args):
+    '''Prints resouces and money till now'''
+    pass
+
+
+def coffee_kitchen(order):
+    '''Checks for resources, Checks for money
+    Order coffee ->  deduce resouces, add money, give chnages if any'''
+    pass
 
 user_choice = input("What would you like? (espresso/latte/cappuccino): ")
+
+if user_choice == "report":
+    give_report()
+elif user_choice == "off":
+    # break
+    pass
+else:
+    coffee_kitchen(user_choice)
+
+
 """
 2. Turn off the Coffee Machine by entering “off” to the prompt.
     a. For maintainers of the coffee machine, they can use “off” as the secret word to turn off
