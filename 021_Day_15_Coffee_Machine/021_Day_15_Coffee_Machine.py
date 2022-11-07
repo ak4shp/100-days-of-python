@@ -17,26 +17,23 @@ def give_report():
 def coffee_kitchen(order):
     '''Checks for resources, Checks for money
     Order coffee ->  deduce resouces, add money, give changes if any'''
-    coffee_type = MENU[order]
-    coffee_ingrades = coffee_type["ingredients"]
-    coffee_cost =coffee_type["cost"]
-
 
     def check_resources()-> bool:
-        print(coffee_ingrades)
+        # print(coffee_ingrades)
+        # resources deduction -> done in check_resource()
         for k, v in coffee_ingrades.items():
             # print(11)
             if resources[k] >= v:
                 resources[k] -= v
             else:
-                print(f"Sorry there is not enough {k}.")
+                print(f"Sorry! there is not enough {k}.")
                 return False
         return True
 
-    print("resources: ", check_resources())
-
 
     def check_money(quarter, dimes, nickel, pennies)-> bool:
+        # add money to machine's account -> done in check_money()
+        # rerurn changes(change money) if any -> done in check_money()
         total_sum = 0.25 * quarter + 0.1 * dimes + 0.05 * nickel + 0.01 * pennies
         if total_sum >= coffee_cost:
             resources["money"] += coffee_cost
@@ -44,21 +41,33 @@ def coffee_kitchen(order):
         else:
             print("insufficient money to buy!")
             return False, None
-        return True, float("{:0.2f}".format(change_money))
+        return True, "{:0.2f}".format(change_money)
     
-    print("money: ",check_money(10, 2, 10, 2))
+
+    def complete_the_order(order, check_resources, check_money) -> None:
+        is_resources = check_resources()
+        if is_resources:
+            print("Please insert some Coins: ")
+            quarter_coins = int(input("Quarter: "))
+            dimes_coins = int(input("Dimes: "))
+            nickel_coins = int(input("Nickel: "))
+            pennies_coins = int(input("Pennies: "))
+
+            is_money, changes_money = check_money(quarter_coins, dimes_coins, nickel_coins, pennies_coins)
+            if is_money:
+                if changes_money is not None:
+                    print(f"Here is your {order}. Enjoy!. You gave ${changes_money} extra!")
+                else:  
+                    print(f"Here is your {order}. Enjoy!.")
 
 
-    def process_order():
-        pass
-        # resources deduction -> done in check_resource()
-        # add money to machine's account -> done in check_money()
-        # rerurn changes(change money) if any -> done in check_money()
-    pass
+    coffee_type = MENU[order]
+    coffee_ingrades = coffee_type["ingredients"]
+    coffee_cost =coffee_type["cost"]
+    complete_the_order(order, check_resources, check_money)
 
 
 user_choice = input("What would you like? (espresso/latte/cappuccino): ")
-
 if user_choice == "report":
     give_report()
 elif user_choice == "off":
