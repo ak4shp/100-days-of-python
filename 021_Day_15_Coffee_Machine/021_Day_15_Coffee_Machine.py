@@ -5,15 +5,57 @@ from menu_resources import MENU, resources
 #     a. Check the user's input to decide what to do next.
 #     b. The prompt should show every time action has completed, e.g. once the drink is
 #     dispensed. The prompt should show again to serve the next customer.
-def give_report(args):
+def give_report():
     '''Prints resouces and money till now'''
-    pass
+    total_water = resources['water']
+    total_milk  = resources['milk']
+    total_coffee = resources['coffee']
+    total_money = resources['money']
+    print(f"\twater: {total_water}\n\tmilk: {total_milk}\n\tcoffee: {total_coffee}\n\tmoney: {total_money}")
 
 
 def coffee_kitchen(order):
     '''Checks for resources, Checks for money
-    Order coffee ->  deduce resouces, add money, give chnages if any'''
+    Order coffee ->  deduce resouces, add money, give changes if any'''
+    coffee_type = MENU[order]
+    coffee_ingrades = coffee_type["ingredients"]
+    coffee_cost =coffee_type["cost"]
+
+
+    def check_resources()-> bool:
+        print(coffee_ingrades)
+        for k, v in coffee_ingrades.items():
+            # print(11)
+            if resources[k] >= v:
+                resources[k] -= v
+            else:
+                print(f"Sorry there is not enough {k}.")
+                return False
+        return True
+
+    print("resources: ", check_resources())
+
+
+    def check_money(quarter, dimes, nickel, pennies)-> bool:
+        total_sum = 0.25 * quarter + 0.1 * dimes + 0.05 * nickel + 0.01 * pennies
+        if total_sum >= coffee_cost:
+            resources["money"] += coffee_cost
+            change_money = total_sum - coffee_cost
+        else:
+            print("insufficient money to buy!")
+            return False, None
+        return True, float("{:0.2f}".format(change_money))
+    
+    print("money: ",check_money(10, 2, 10, 2))
+
+
+    def process_order():
+        pass
+        # resources deduction -> done in check_resource()
+        # add money to machine's account -> done in check_money()
+        # rerurn changes(change money) if any -> done in check_money()
     pass
+
 
 user_choice = input("What would you like? (espresso/latte/cappuccino): ")
 
