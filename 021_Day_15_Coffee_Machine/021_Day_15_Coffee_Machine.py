@@ -1,7 +1,8 @@
 from menu_resources import MENU, resources
 from art import LOGO
 
-def give_report():
+
+def give_report() -> None:
     '''Prints resouces and money till now'''
     total_water = resources['water']
     total_milk  = resources['milk']
@@ -10,12 +11,12 @@ def give_report():
     print(f"\tWater: {total_water}ml\n\tMilk: {total_milk}ml\n\tCoffee: {total_coffee}g\n\tMoney: ${total_money}")
 
 
-def coffee_kitchen(order):
+def coffee_kitchen(order : str)-> None:
     '''Checks for resources, Checks for money.
     Order coffee ->  deduce resouces, add money, return back the change money if any'''
 
 
-    def check_resources(coffee_ingrades)-> bool:
+    def check_resources(coffee_ingrades : dict)-> bool:
         '''Takes Coffee Ingradients, Checks if the ingrads are sufficient to make that order.'''
 
         for k, v in coffee_ingrades.items():
@@ -25,7 +26,7 @@ def coffee_kitchen(order):
         return True
 
 
-    def check_money(quarter, dimes, nickel, pennies, coffee_cost)-> bool:
+    def check_money(quarter:int, dimes:int, nickel:int, pennies:int, coffee_cost:float)-> bool:
         '''Takes quantity of each denomination, checks for sufficient money to bey the order. Returns Bool with change money if any.'''
         
         total_sum = 0.25 * quarter + 0.1 * dimes + 0.05 * nickel + 0.01 * pennies
@@ -38,13 +39,13 @@ def coffee_kitchen(order):
         return True, "{:0.2f}".format(change_money)
 
 
-    def reduce_resource(ingrades)-> None:
+    def reduce_resource(ingrades : dict)-> None:
         '''Takes ingrades, Reduces the raw materials from machine that is used by previous order'''
         for k, v in ingrades.items():
             resources[k] -= v
     
 
-    def complete_the_order(order) -> None:
+    def complete_the_order(order : str) -> None:
         '''Takes order, completes the order if sufficient resources and money. Returns None'''
         coffee_type = MENU[order]
         coffee_ingrades = coffee_type["ingredients"]
@@ -68,7 +69,7 @@ def coffee_kitchen(order):
     complete_the_order(order)
 
 
-def place_order():
+def place_order() -> None:
     is_coffee_machine_on = True
     while is_coffee_machine_on:
         user_choice = input("\nWhat would you like? (espresso/latte/cappuccino) or (report/off): ")
@@ -79,6 +80,7 @@ def place_order():
             is_coffee_machine_on = False
         else:
             coffee_kitchen(user_choice)
+
 
 print(LOGO)
 place_order()
