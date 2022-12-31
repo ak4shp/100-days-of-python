@@ -338,6 +338,9 @@ question_set = [
 
 def get_questions():
     print("Please select a category from the list below.")
+    question_data = []
+    cat_num = None
+    cat_name = ""
     for ct in question_category:
         print(ct)
 
@@ -345,11 +348,13 @@ def get_questions():
     try:
         category = int(user) 
         question_data = question_set[category-1]
+        cat_num, cat_name = question_category[category-1].split()
     except ValueError:
         print("Invalid !! \n>>Please enter Integer only<<")
+        return []
     except IndexError:
         print("Invalid !! \n>>Please enter number only in the given category range<<")
-
-    cat_num, cat_name = question_category[category-1].split()
+        return []
+    
     print(f"Your Quiz for '{cat_name}' begins...\n*****ALL THE BEST :)*****\n")
     return question_data

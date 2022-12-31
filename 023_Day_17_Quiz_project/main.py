@@ -11,12 +11,11 @@ for q in question_data:
     question = Question(q_text, q_ans)
     question_bank.append(question)
 
-
 quiz = QuizBrain(question_bank)
-
 while quiz.still_has_question():
     user_answer = quiz.next_question()
     quiz.check_answer(user_answer)
 
-print("You have completed the quiz.")
-print(f"Your final score is {quiz.score}/{quiz.question_number}")
+if not question_data:
+    print("You have completed the quiz.")
+    print(f"Your final score is {quiz.score}/{quiz.question_number}")
