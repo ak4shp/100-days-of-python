@@ -16,6 +16,6 @@ while quiz.still_has_question():
     user_answer = quiz.next_question()
     quiz.check_answer(user_answer)
 
-if not question_data:
+if question_data:
     print("You have completed the quiz.")
     print(f"Your final score is {quiz.score}/{quiz.question_number}")
