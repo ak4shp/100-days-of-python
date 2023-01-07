@@ -4,22 +4,39 @@ t = Turtle()
 colormode(255)
 
 
-"""Make colored random walk"""
+"""Spiral Graph"""
 def new_color():
     r = random.randint(0, 255)
     g = random.randint(0, 255)
     b = random.randint(0, 255)
     return (r, g, b)
 
-direction = [0, 90, 180, 270]
-t.pensize(5)
+def draw_graph(gap_size):
+    for _ in range(360 // gap_size):
+        t.color(new_color())
+        t.circle(100)
+        t.setheading(t.heading() + gap_size)
+
 t.speed("fastest")
-# t.screen.screensize(20, 30)
-for _ in range(500):
-    col = new_color()
-    t.color(col)
-    t.setheading(random.choice(direction))
-    t.forward(20)
+draw_graph(5)
+
+
+"""Make colored random walk"""
+# def new_color():
+#     r = random.randint(0, 255)
+#     g = random.randint(0, 255)
+#     b = random.randint(0, 255)
+#     return (r, g, b)
+
+# direction = [0, 90, 180, 270]
+# t.pensize(5)
+# t.speed("fastest")
+# # t.screen.screensize(20, 30)
+# for _ in range(500):
+#     col = new_color()
+#     t.color(col)
+#     t.setheading(random.choice(direction))
+#     t.forward(20)
 
 
 """Draw different shapes (nested)"""
