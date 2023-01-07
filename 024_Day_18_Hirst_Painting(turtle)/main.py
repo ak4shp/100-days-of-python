@@ -1,17 +1,30 @@
 from turtle import Turtle, Screen
 import random
 t = Turtle()
+colors = ["Black", "CornflowerBlue", "Goldenrod", "Blue", "Red", "SpringGreen", "DodgerBlue", "Magenta"]
+
+"""Draw different shapes (nested)"""
+
+for i in range(8):
+    shape_id = i + 3
+    angle = 360 // (shape_id)
+    t.pensize(2)
+    t.color(colors[i])
+    for _ in range(shape_id):
+        t.forward(70)
+        t.right(angle=angle)
+
 
 """Square with dashed line and dot"""
-for _ in range(4):
-    t.right(90)
-    for _ in range(20):
-        t.pendown()
-        t.forward(5)
-        t.penup()
-        t.dot()
-        t.forward(5)
-    t.dot()
+# for _ in range(4):
+#     t.right(90)
+#     for _ in range(20):
+#         t.pendown()
+#         t.forward(5)
+#         t.penup()
+#         t.dot()
+#         t.forward(5)
+#     t.dot()
 
 
 """Make colored random drawing"""
