@@ -3,22 +3,37 @@ import random
 t = Turtle()
 colormode(255)
 
+"""Extract colors from any image"""
+# import colorgram
+
+# def get_image_colors(image:str) -> list:
+#     image_colors = colorgram.extract(image, 30)
+#     rgb_colors = []
+#     for color in image_colors:
+#         r = color.rgb.r
+#         g = color.rgb.g
+#         b = color.rgb.b
+#         rgb_colors.append((r, g, b))
+#     return rgb_colors
+
+# print(get_image_colors("image.jpg"))
+
 
 """Spiral Graph"""
-def new_color():
-    r = random.randint(0, 255)
-    g = random.randint(0, 255)
-    b = random.randint(0, 255)
-    return (r, g, b)
+# def new_color():
+#     r = random.randint(0, 255)
+#     g = random.randint(0, 255)
+#     b = random.randint(0, 255)
+#     return (r, g, b)
 
-def draw_graph(gap_size):
-    for _ in range(360 // gap_size):
-        t.color(new_color())
-        t.circle(100)
-        t.setheading(t.heading() + gap_size)
+# def draw_graph(gap_size):
+#     for _ in range(360 // gap_size):
+#         t.color(new_color())
+#         t.circle(100)
+#         t.setheading(t.heading() + gap_size)
 
-t.speed("fastest")
-draw_graph(5)
+# t.speed("fastest")
+# draw_graph(5)
 
 
 """Make colored random walk"""
