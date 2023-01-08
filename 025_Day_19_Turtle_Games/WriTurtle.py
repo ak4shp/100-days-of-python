@@ -51,6 +51,23 @@ def change_color():
     pen_color = random.choice(colors)
     t.color(pen_color)
 
+def erasor():
+    """Erasor (Change pen stroke color to White) | Key= 'e'."""
+    t.color("White")
+
+def pen_up():
+    """Free hand mode for movement of cursor | Key= 'f'."""
+    t.penup()
+
+def pen_down():
+    """Writing mode | Key= 'd'."""
+    t.pendown()
+
+def clear_screen():
+    """Clears all drawing | key= 'q'."""
+    screen.clear()
+
+
 # Key press Events
 screen.onkeypress(fwd, "Up")
 screen.onkeypress(bkwd, "Down")
@@ -59,6 +76,11 @@ screen.onkeypress(rght, "Right")
 screen.onkeypress(pen_size_incr, "a")
 screen.onkeypress(pen_size_decr, "s")
 screen.onkeypress(change_color, "c")
+screen.onkeypress(erasor, "e")
+screen.onkeypress(pen_up, "f")
+screen.onkeypress(pen_down, "d")
+screen.onkeypress(clear_screen, "q")
+
 
 screen.listen()
 
