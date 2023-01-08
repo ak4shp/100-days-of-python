@@ -69,19 +69,24 @@ def clear_screen():
 
 
 # Key press Events
-screen.onkeypress(fwd, "Up")
-screen.onkeypress(bkwd, "Down")
-screen.onkeypress(lft, "Left")
-screen.onkeypress(rght, "Right")
-screen.onkeypress(pen_size_incr, "a")
-screen.onkeypress(pen_size_decr, "s")
-screen.onkeypress(change_color, "c")
-screen.onkeypress(erasor, "e")
-screen.onkeypress(pen_up, "f")
-screen.onkeypress(pen_down, "d")
-screen.onkeypress(clear_screen, "q")
+def main():
+    # t.write("WriTurtle", font= ('Arial',12,'bold'))
+    opr = Movements()
+    t.color(opr.pen_color)
+    t.pensize(opr.pen_size)
+    screen.onkeypress(opr.fwd, "Up")
+    screen.onkeypress(opr.bkwd, "Down")
+    screen.onkeypress(opr.lft, "Left")
+    screen.onkeypress(opr.rght, "Right")
+    screen.onkeypress(opr.pen_size_incr, "a")
+    screen.onkeypress(opr.pen_size_decr, "s")
+    screen.onkeypress(opr.change_color, "c")
+    screen.onkeypress(opr.erasor, "e")
+    screen.onkeypress(opr.pen_up, "f")
+    screen.onkeypress(opr.pen_down, "d")
+    screen.onkeypress(opr.clear_screen, "q")
 
+    screen.listen()
 
-screen.listen()
-
+main()
 screen.exitonclick()
