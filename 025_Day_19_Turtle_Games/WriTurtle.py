@@ -27,14 +27,12 @@ class Movements:
 
     def pen_size_incr(self):
         """Increase pen stroke by 1. Max upto 10 | key= 'a'"""
-        # global pen_size
         if not self.pen_size >= 15:
             self.pen_size += 1
             self.t.pensize(self.pen_size)
 
     def pen_size_decr(self):
         """Decrease pen stroke by 1. Min upto 1 | key= 's'"""
-        # global pen_size
         if not self.pen_size <= 1 :
             self.pen_size -= 1
             self.t.pensize(self.pen_size)
@@ -52,7 +50,6 @@ class Movements:
         self.t.pencolor("White")
         self.t.shape("arrow")
 
-
     def pen_up(self):
         """Free hand mode for movement of cursor | Key= 'f'."""
         self.t.penup()
@@ -61,12 +58,20 @@ class Movements:
         """Writing mode | Key= 'd'."""
         self.t.pendown()
 
+    def write_name(self):
+        """Print 'WriTurtle' in current position. | key= 'w'."""
+        self.t.write("WriTurtle", font= ('Roboto',10,'bold'))
+
+    def write_text(self):
+        """Print '-by Ak4shp' in current position. | key= 't'."""
+        self.t.write("-by Ak4shp   ", move= True, font= ('Sans Serif',10,'bold'))
+
     def reset_screen(self):
         """Clears all drawings and reintialises turtle | key= 'r'."""
         self.screen.reset()
+        self.pen_size = 1
         
-
-
+# Game Play
 def start():
     """Initialises objects"""
     t = Turtle()
@@ -74,11 +79,9 @@ def start():
     movement = Movements(turtle=t, screen=screen)
     return t, screen, movement
 
-
-# Key press Events
 def main():
-    # t.write("WriTurtle", font= ('Arial',12,'bold'))
     t, screen, opration = start()
+
     t.color(opration.pen_color)
     t.pensize(opration.pen_size)
     screen.onkeypress(opration.fwd, "Up")
@@ -91,12 +94,16 @@ def main():
     screen.onkeypress(opration.erasor, "e")
     screen.onkeypress(opration.pen_up, "f")
     screen.onkeypress(opration.pen_down, "d")
+    screen.onkeypress(opration.write_name, "w")
+    screen.onkeypress(opration.write_text, "t")
     screen.onkeypress(opration.reset_screen, "r")
 
     screen.listen()
     screen.exitonclick()    
     
-main()
+
+if __name__ == "__main__":    
+    main()
 
 
 """
@@ -113,6 +120,8 @@ Change Pen stroke color --> "c"
 Erasor --> "e" 
 Turn Off stroke --> "f" 
 Turn On stroke --> "d" 
+Write name --> "w"
+Write text --> "t"
 Clear all drawing --> "r" 
 ...
 """
