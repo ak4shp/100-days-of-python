@@ -29,36 +29,36 @@ def rght():
 
     t.right(10)
 
-# def pen_size_incr():
-#     """Increase pen stroke by 1. Max upto 10 | key= 'a'"""
-#     global pen_size
-#     if not pen_size >= 10:
-#         pen_size += 1
-#         t.pensize(pen_size)
+def pen_size_incr():
+    """Increase pen stroke by 1. Max upto 10 | key= 'a'"""
+    global pen_size
+    if not pen_size >= 10:
+        pen_size += 1
+        t.pensize(pen_size)
 
 
-# def pen_size_decr():
-#     """Decrease pen stroke by 1. Min upto 1 | key= 's'"""
-#     global pen_size
-#     if not pen_size <= 1 :
-#         pen_size -= 1
-#         t.pensize(pen_size)
+def pen_size_decr():
+    """Decrease pen stroke by 1. Min upto 1 | key= 's'"""
+    global pen_size
+    if not pen_size <= 1 :
+        pen_size -= 1
+        t.pensize(pen_size)
 
-# def change_color():
-#     """Change pen stroke color randomly | Key= 'c'."""
-#     global pen_color
-#     colors = ["Black", "CornflowerBlue", "Goldenrod", "Blue", "Red", "SpringGreen", "DodgerBlue", "Magenta"]
-#     pen_color = random.choice(colors)
-#     t.color(pen_color)
+def change_color():
+    """Change pen stroke color randomly | Key= 'c'."""
+    global pen_color
+    colors = ["Black", "CornflowerBlue", "Goldenrod", "Blue", "Red", "SpringGreen", "DodgerBlue", "Magenta"]
+    pen_color = random.choice(colors)
+    t.color(pen_color)
 
 # Key press Events
 screen.onkeypress(fwd, "Up")
 screen.onkeypress(bkwd, "Down")
 screen.onkeypress(lft, "Left")
 screen.onkeypress(rght, "Right")
-# screen.onkeypress(pen_size_incr, "a")
-# screen.onkeypress(pen_size_decr, "s")
-# screen.onkeypress(change_color, "c")
+screen.onkeypress(pen_size_incr, "a")
+screen.onkeypress(pen_size_decr, "s")
+screen.onkeypress(change_color, "c")
 
 screen.listen()
 
