@@ -28,7 +28,7 @@ class Movements:
     def pen_size_incr(self):
         """Increase pen stroke by 1. Max upto 10 | key= 'a'"""
         # global pen_size
-        if not self.pen_size >= 10:
+        if not self.pen_size >= 15:
             self.pen_size += 1
             self.t.pensize(self.pen_size)
 
@@ -43,11 +43,15 @@ class Movements:
         """Change pen stroke color randomly | Key= 'c'."""
         colors = ["Black", "CornflowerBlue", "Goldenrod", "Blue", "Red", "SpringGreen", "DodgerBlue", "Magenta"]
         self.pen_color = random.choice(colors)
-        self.t.color(self.pen_color)
+        self.t.pencolor(self.pen_color)
+        self.t.shape("classic")
+        self.t.shapesize(outline = 1.2)
 
     def erasor(self):
         """Erasor (Change pen stroke color to White) | Key= 'e'."""
-        self.t.color("White")
+        self.t.pencolor("White")
+        self.t.shape("arrow")
+
 
     def pen_up(self):
         """Free hand mode for movement of cursor | Key= 'f'."""
@@ -57,9 +61,10 @@ class Movements:
         """Writing mode | Key= 'd'."""
         self.t.pendown()
 
-    def clear_screen(self):
-        """Clears all drawing | key= 'q'."""
-        self.screen.clear()
+    def reset_screen(self):
+        """Clears all drawings and reintialises turtle | key= 'r'."""
+        self.screen.reset()
+        
 
 
 def start():
@@ -86,10 +91,11 @@ def main():
     screen.onkeypress(opration.erasor, "e")
     screen.onkeypress(opration.pen_up, "f")
     screen.onkeypress(opration.pen_down, "d")
-    screen.onkeypress(opration.clear_screen, "q")
+    screen.onkeypress(opration.reset_screen, "r")
 
     screen.listen()
     screen.exitonclick()    
+    
 main()
 
 
@@ -107,6 +113,6 @@ Change Pen stroke color --> "c"
 Erasor --> "e" 
 Turn Off stroke --> "f" 
 Turn On stroke --> "d" 
-Clear all drawing(Beta) --> "q" 
+Clear all drawing --> "r" 
 ...
 """
