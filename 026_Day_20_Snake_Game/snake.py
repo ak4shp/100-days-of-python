@@ -22,6 +22,16 @@ class Snake:
             t.color("white")
             t.goto(pos)
             self.body_parts.append(t)
+        
+    def increase_tail(self):
+        last_x = self.body_parts[-1].xcor()
+        last_y = self.body_parts[-1].ycor()
+        pos = (last_x, last_y)
+        new_t = Turtle(shape="square")
+        new_t.penup()
+        new_t.color("white")
+        new_t.goto(pos)
+        self.body_parts.append(new_t)
 
     def move(self): 
         #! moving each nth segment to the position of (n-1)th segment
@@ -42,7 +52,7 @@ class Snake:
     def left(self):
         if self.head.heading() != RIGHT:
             self.head.setheading(LEFT)
-            
+
     def right(self):
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
