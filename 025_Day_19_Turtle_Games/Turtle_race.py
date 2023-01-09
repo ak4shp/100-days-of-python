@@ -1,13 +1,15 @@
 from turtle import Turtle, Screen
 import random
 
+is_race_on = False
 screen = Screen()
 screen.setup(width=500, height=400)
-my_turtle = screen.textinput(title="Turtle Race", prompt="Which Turtle is yours? ")
+bet_turtle = screen.textinput(title="Turtle Race", prompt="Which Turtle is yours? (Red, Blue, Black, Orange, Green, Purple) ")
 
 colors = ["Red", "Blue", "Black", "Orange", "Green", "Purple"]
-y_pos = -120
 all_turtles = []
+y_pos = -120
+winner = ""
 
 for i in range(6):
     t = Turtle(shape="turtle")
@@ -17,7 +19,17 @@ for i in range(6):
     y_pos += 40
     all_turtles.append(t)
 
-# print(my_turtle)
+if bet_turtle:
+    is_race_on = True
+
+while is_race_on:
+    for tim in all_turtles:
+        if tim.xcor() > 230:
+            winner = tim.pencolor()
+            is_race_on = False
+        dist = random.randint(0, 10)
+        tim.forward(dist)
+
 
 
 screen.exitonclick()
