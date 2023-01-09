@@ -60,15 +60,19 @@ class Movements:
 
     def write_name(self):
         """Print 'WriTurtle' in current position. | key= 'w'."""
-        self.t.write("WriTurtle", font= ('Roboto',10,'bold'))
+        self.t.write("WriTurtle -by Ak4shp   ", move= True, font= ('Sans Serif',10,'italic bold'))
 
     def write_text(self):
-        """Print '-by Ak4shp' in current position. | key= 't'."""
-        self.t.write("-by Ak4shp   ", move= True, font= ('Sans Serif',10,'bold'))
+        """Print user given text in current position. | key= 't'."""
+        text = self.screen.textinput(title="WriTurtle", prompt="Enter text...")
+        if text == "" or text == None:
+            text = "WriTurtle -by Ak4shp"
+        self.t.write(text, move= True, font= ('Times New Roman',10,'bold'))
 
     def reset_screen(self):
         """Clears all drawings and reintialises turtle | key= 'r'."""
         self.screen.reset()
+        # self.t.clear()
         self.pen_size = 1
         
 # Game Play
@@ -81,7 +85,8 @@ def start():
 
 def main():
     t, screen, opration = start()
-
+    
+    screen.title("WriTurtle (by Ak4shp)")
     t.color(opration.pen_color)
     t.pensize(opration.pen_size)
     screen.onkeypress(opration.fwd, "Up")
