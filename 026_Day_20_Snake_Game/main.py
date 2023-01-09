@@ -10,7 +10,7 @@ from scoreboard import Scoreboard
 #TODO 4: Detect collision with food -> done
 #TODO 5: Create a scoreboard -> done
 #TODO 6: Detect collision with wall -> done
-#TODO 7: Detect Collision with tail
+#TODO 7: Detect Collision with tail -> done
 
 #* Setup Screen 
 screen = Screen()

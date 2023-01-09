@@ -15,7 +15,8 @@ class Snake:
         self.head.color("red")
         self.head.shape("turtle")
 
-    def create_snake(self):    
+    def create_snake(self):
+        """Create A snake by merging all the Body Parts"""    
         for pos in SNAKE_POSITIONS:
             t = Turtle(shape="square")
             t.penup()
@@ -24,6 +25,7 @@ class Snake:
             self.body_parts.append(t)
         
     def increase_tail(self):
+        """Add a new segment to the last position of snake's body."""
         last_x = self.body_parts[-1].xcor()
         last_y = self.body_parts[-1].ycor()
         pos = (last_x, last_y)
@@ -33,7 +35,8 @@ class Snake:
         new_t.goto(pos)
         self.body_parts.append(new_t)
 
-    def move(self): 
+    def move(self):
+        """Moves snake continuously""" 
         #! moving each nth segment to the position of (n-1)th segment
         for seg in range(len(self.body_parts)-1, 0, -1):
             new_x = self.body_parts[seg -1].xcor()
@@ -42,18 +45,22 @@ class Snake:
         self.head.forward(MOVE_STEP)
 
     def up(self):
+        """Turn UP | 'Up' arrow key"""
         if self.head.heading() != DOWN:
             self.head.setheading(UP)
 
     def down(self):
+        """Turn DOWN | 'Down' arrow key"""
         if self.head.heading() != UP:
             self.head.setheading(DOWN)
 
     def left(self):
+        """Turn LEFT | 'Left' arrow key"""
         if self.head.heading() != RIGHT:
             self.head.setheading(LEFT)
 
     def right(self):
+        """Turn RIGHT | 'Right' arrow key"""
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
         
