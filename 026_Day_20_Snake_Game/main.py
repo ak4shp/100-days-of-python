@@ -19,6 +19,12 @@ screen.tracer(0)
 
 snake = Snake()
 
+screen.listen()
+screen.onkeypress(snake.up, "Up")
+screen.onkeypress(snake.down, "Down")
+screen.onkeypress(snake.left, "Left")
+screen.onkeypress(snake.right, "Right")
+
 game_on = True
 while game_on:
     screen.update()    #* Shows the Hiden animation by (screen.tracer(0))
