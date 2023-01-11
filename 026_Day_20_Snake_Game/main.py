@@ -25,6 +25,9 @@ def game_setup():
     food = Food()
     scoreboard = Scoreboard()
 
+    user_name = screen.textinput("Welcome to SNAKEython!", "Who is going to play?")
+    scoreboard.name = user_name
+
     screen.listen()
     screen.onkeypress(snake.up, "Up")
     screen.onkeypress(snake.down, "Down")
