@@ -14,6 +14,9 @@ class Snake:
         self.head = self.body_parts[0]
         self.head.color("red")
         self.head.shape("turtle")
+        self.tail = self.body_parts[-1]
+        self.tail.shape("triangle")
+        self.tail.tiltangle(180)
 
     def create_snake(self):
         """Create A snake by merging all the Body Parts"""    
@@ -33,7 +36,7 @@ class Snake:
         new_t.penup()
         new_t.color("white")
         new_t.goto(pos)
-        self.body_parts.append(new_t)
+        self.body_parts.insert(-1, new_t)
 
     def move(self):
         """Moves snake continuously""" 
@@ -42,25 +45,39 @@ class Snake:
             new_x = self.body_parts[seg -1].xcor()
             new_y = self.body_parts[seg -1].ycor()
             self.body_parts[seg].goto(new_x, new_y)
+            # print("angle ,", self.body_parts[seg-1].heading())
+            self.tail.setheading(self.body_parts[seg-1].heading())  #? Changes Tail angle
         self.head.forward(MOVE_STEP)
 
     def up(self):
         """Turn UP | 'Up' arrow key"""
         if self.head.heading() != DOWN:
             self.head.setheading(UP)
+        # tail_angle = self.tail.tiltangle()
+        # if tail_angle != DOWN:
+        #     self.tail.tiltangle(DOWN)
 
     def down(self):
         """Turn DOWN | 'Down' arrow key"""
+        # tail_angle = self.tail.tiltangle()
+        # if tail_angle != UP:
+        #     self.tail.tiltangle(UP)
         if self.head.heading() != UP:
             self.head.setheading(DOWN)
 
     def left(self):
         """Turn LEFT | 'Left' arrow key"""
+        # tail_angle = self.tail.tiltangle()
+        # if tail_angle != RIGHT:
+        #     self.tail.tiltangle(RIGHT)
         if self.head.heading() != RIGHT:
             self.head.setheading(LEFT)
 
     def right(self):
         """Turn RIGHT | 'Right' arrow key"""
+        # tail_angle = self.tail.tiltangle()
+        # if tail_angle != LEFT:
+        #     self.tail.tiltangle(LEFT)
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
         
