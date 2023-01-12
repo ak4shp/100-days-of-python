@@ -29,5 +29,11 @@ class Scoreboard(Turtle):
     def game_over(self):
         """Write 'Game Over' to the center of the game screen."""
         self.goto(0, 0)
-        self.write(f"Game Over", move=False, align=ALIGNMENT, font=FONT)
+        self.write(f"Game Over!!\nPress 'r' to resart.\nPress 'q' to quit.", move=False, align=ALIGNMENT, font=FONT)
 
+    def quit_me(self, food:object, snake:object):
+        self.clear()
+        food.clear_screen()
+        snake.clear_screen()
+        self.goto(0, 0)
+        self.write(f"Thank You💕 for using SNAKEython.", move=False, align=ALIGNMENT, font=FONT)

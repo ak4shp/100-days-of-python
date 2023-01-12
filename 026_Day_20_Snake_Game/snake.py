@@ -68,4 +68,8 @@ class Snake:
         """Turn RIGHT | 'Right' arrow key"""
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
+
+    def clear_screen(self):
+        for t in self.body_parts:
+            t.hideturtle()
         
